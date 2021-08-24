@@ -1,0 +1,60 @@
+/* 
+EL DISEÑO DE LAYOUT PUEDE REALIZARSE FACILMENTE UTLIZANDO FLEXBOX Y GRID. PARA VISTAS MOBILES O PEQUEÑAS PODRIA EMPLEARSE GRID Y PARA VISTAS DESKTOP PUEDE
+UTLIZARSE FLEXBOX, OBVIAMENTE, UTILIZANDO LAS MEDIAS QUERIS. YA ES EL GUSTO QUE UNO TENGA.
+
+*/
+
+
+*,
+*::before, *::after {
+	box-sizing: border-box;
+}
+body{
+	margin: 0;
+	background: orange;
+}
+ *{
+	border: 1px solid black;
+}
+body{
+	/* 
+	fr -> fraccion (UNIDAD DE GRID) ES UNA FRACCION DEL ESPACIO DISPONIBLE
+	flex-grow: 2;	(UNIDAD DE FLEXBOX)
+	*/
+	height: 100vh;
+	display: grid;
+	/* grid-template-columns: 20% 80%;  UTILIZANDO PORCENTAJE APARECE UNA BARRA DE SCROLL HORIZONTAL... SE VE FEO*/
+	/* grid-template-columns: 4fr 1fr;  UTILIZANDO ESTA UNIDAD DE GRID, ESA BARRA DE SCROLL DESAPARECE */
+	grid-template-columns: repeat(10, 1fr); /* SE ORDENA HACER 10 PEDAZOS/COLUMNAS DEL MISMO TAMAÑO */
+	grid-template-rows: 100px 1fr 50px;
+	grid-template-areas: "header header header header header header header header logo logo"
+							"sidebar-1 sidebar-1 main main main main main main sidebar-2 sidebar-2"
+							"footer footer footer footer footer footer footer footer footer footer";
+	grid-gap: 10px;
+}
+header {
+	grid-area: header;
+	/*grid-column: 1 / span 8;*/ /* EL NUMERO 1 ES LA LINEA Y SPAN ES PARA ORDENAR EL NUMERO DE COLUMNAS QUE SE OCUPARAN */
+}
+.logo {
+/*	grid-column: span 2;*/
+grid-area: logo;
+}
+footer{
+	grid-area: footer;
+	/*grid-column: 1 / span 10;*/ /* INICIA DESDE LA LINEA 1 Y OCUPA LAS 10 COLUMNAS */
+	/*grid-row: 3;*/ /* SE POSICIONA EN LA 3 FILA */
+}
+main {
+	grid-area: main;
+/*	grid-column: 3 / span 6;*/
+}
+.sidebar-1{
+	grid-area: sidebar-1;
+/*	grid-column: 1 / span 2;
+	grid-row: 2;*/
+}
+.sidebar-2{
+	grid-area: sidebar-2;
+/*	grid-column: span 2;*/
+}
